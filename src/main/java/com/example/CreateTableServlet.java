@@ -24,16 +24,55 @@ public class CreateTableServlet extends HttpServlet {
             Connection con = DBConnection.getConnection();
             Statement stmt = con.createStatement()
         ) {
-            String sql = "CREATE TABLE IF NOT EXISTS students (" +
-                         "id SERIAL PRIMARY KEY, " +
-                         "name VARCHAR(100), " +
-                         "age INT)";
+            String sql = """
+                CREATE TABLE IF NOT EXISTS students (
+                    id SERIAL PRIMARY KEY,
+                    name VARCHAR(100) NOT NULL,
+                    age INT NOT NULL
+                )
+            """;
 
             stmt.executeUpdate(sql);
 
-            out.println("<h2>students table created successfully</h2>");
+            out.println("""
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset='UTF-8'>
+                    <title>Create Table</title>
+                    <link rel='stylesheet' href='style.css'>
+                </head>
+                <body>
+                    <div class='page'>
+                        <div class='card small-card'>
+                            <h1>Table Ready</h1>
+                            <p>The <b>students</b> table was created successfully.</p>
+                            <a class='btn' href='index.html'>Back to Home</a>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            """);
         } catch (Exception e) {
-            out.println("<h2>Error: " + e.getMessage() + "</h2>");
+            out.println("""
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset='UTF-8'>
+                    <title>Error</title>
+                    <link rel='stylesheet' href='style.css'>
+                </head>
+                <body>
+                    <div class='page'>
+                        <div class='card small-card'>
+                            <h1>Error</h1>
+                            <p>""" + e.getMessage() + """</p>
+                            <a class='btn' href='index.html'>Back to Home</a>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            """);
         }
     }
 }

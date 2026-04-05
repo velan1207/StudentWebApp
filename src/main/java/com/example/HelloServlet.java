@@ -17,11 +17,24 @@ public class HelloServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        out.println("<html>");
-        out.println("<body>");
-        out.println("<h1>Hello from Servlet</h1>");
-        out.println("<p>Your first servlet is working.</p>");
-        out.println("</body>");
-        out.println("</html>");
+        out.println("""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset='UTF-8'>
+                <title>Hello Servlet</title>
+                <link rel='stylesheet' href='style.css'>
+            </head>
+            <body>
+                <div class='page'>
+                    <div class='card small-card'>
+                        <h1>Hello from Servlet</h1>
+                        <p>Your first servlet is working perfectly.</p>
+                        <a class='btn' href='index.html'>Back to Home</a>
+                    </div>
+                </div>
+            </body>
+            </html>
+        """);
     }
 }
