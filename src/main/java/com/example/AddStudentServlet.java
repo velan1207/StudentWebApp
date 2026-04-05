@@ -29,16 +29,16 @@ public class AddStudentServlet extends HttpServlet {
                 <!DOCTYPE html>
                 <html>
                 <head>
-                    <meta charset='UTF-8'>
+                    <meta charset="UTF-8">
                     <title>Validation Error</title>
-                    <link rel='stylesheet' href='style.css'>
+                    <link rel="stylesheet" href="style.css">
                 </head>
                 <body>
-                    <div class='page'>
-                        <div class='card small-card'>
+                    <div class="page">
+                        <div class="card small-card">
                             <h1>Missing Data</h1>
                             <p>Please enter both name and age.</p>
-                            <a class='btn' href='index.html'>Back</a>
+                            <a class="btn" href="index.html">Back</a>
                         </div>
                     </div>
                 </body>
@@ -53,7 +53,8 @@ public class AddStudentServlet extends HttpServlet {
             try (
                 Connection con = DBConnection.getConnection();
                 PreparedStatement pst = con.prepareStatement(
-                        "INSERT INTO students(name, age) VALUES (?, ?)")
+                    "INSERT INTO students(name, age) VALUES (?, ?)"
+                )
             ) {
                 pst.setString(1, name.trim());
                 pst.setInt(2, age);
@@ -64,19 +65,21 @@ public class AddStudentServlet extends HttpServlet {
                 <!DOCTYPE html>
                 <html>
                 <head>
-                    <meta charset='UTF-8'>
+                    <meta charset="UTF-8">
                     <title>Student Added</title>
-                    <link rel='stylesheet' href='style.css'>
+                    <link rel="stylesheet" href="style.css">
                 </head>
                 <body>
-                    <div class='page'>
-                        <div class='card small-card'>
+                    <div class="page">
+                        <div class="card small-card">
                             <h1>Student Added</h1>
-                            <p><b>Name:</b> """ + name + """</p>
-                            <p><b>Age:</b> """ + age + """</p>
-                            <div class='actions center'>
-                                <a class='btn' href='index.html'>Home</a>
-                                <a class='btn secondary' href='view-students'>View Students</a>
+                            <p><b>Name:</b> """ + name + """
+                            </p>
+                            <p><b>Age:</b> """ + age + """
+                            </p>
+                            <div class="actions center">
+                                <a class="btn" href="index.html">Home</a>
+                                <a class="btn secondary" href="view-students">View Students</a>
                             </div>
                         </div>
                     </div>
@@ -89,16 +92,16 @@ public class AddStudentServlet extends HttpServlet {
                 <!DOCTYPE html>
                 <html>
                 <head>
-                    <meta charset='UTF-8'>
+                    <meta charset="UTF-8">
                     <title>Invalid Age</title>
-                    <link rel='stylesheet' href='style.css'>
+                    <link rel="stylesheet" href="style.css">
                 </head>
                 <body>
-                    <div class='page'>
-                        <div class='card small-card'>
+                    <div class="page">
+                        <div class="card small-card">
                             <h1>Invalid Age</h1>
                             <p>Age must be a valid number.</p>
-                            <a class='btn' href='index.html'>Back</a>
+                            <a class="btn" href="index.html">Back</a>
                         </div>
                     </div>
                 </body>
@@ -109,16 +112,17 @@ public class AddStudentServlet extends HttpServlet {
                 <!DOCTYPE html>
                 <html>
                 <head>
-                    <meta charset='UTF-8'>
+                    <meta charset="UTF-8">
                     <title>Error</title>
-                    <link rel='stylesheet' href='style.css'>
+                    <link rel="stylesheet" href="style.css">
                 </head>
                 <body>
-                    <div class='page'>
-                        <div class='card small-card'>
+                    <div class="page">
+                        <div class="card small-card">
                             <h1>Error</h1>
-                            <p>""" + e.getMessage() + """</p>
-                            <a class='btn' href='index.html'>Back</a>
+                            <p>""" + e.getMessage() + """
+                            </p>
+                            <a class="btn" href="index.html">Back</a>
                         </div>
                     </div>
                 </body>

@@ -21,41 +21,18 @@ public class ViewStudentsServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        out.println("""
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <meta charset='UTF-8'>
-                <title>Student List</title>
-                <link rel='stylesheet' href='style.css'>
-            </head>
-            <body>
-                <div class='page'>
-                    <div class='card wide-card'>
-                        <div class='header-row'>
-                            <div>
-                                <h1>Student Records</h1>
-                                <p class='subtitle'>Modern servlet-based student management view</p>
-                            </div>
-                            <div class='actions'>
-                                <a class='btn' href='index.html'>Home</a>
-                            </div>
-                        </div>
-        """);
+        out.println("<html><body>");
+        out.println("<h2>Student List</h2>");
 
         try (
             Connection con = DBConnection.getConnection();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM students ORDER BY id")
         ) {
-            out.println("<div class='table-wrap'>");
-            out.println("<table class='modern-table'>");
-            out.println("<thead><tr><th>ID</th><th>Name</th><th>Age</th></tr></thead>");
-            out.println("<tbody>");
+            out.println("<table border='1' cellpadding='8'>");
+            out.println("<tr><th>ID</th><th>Name</th><th>Age</th></tr>");
 
-            boolean hasData = false;
             while (rs.next()) {
-                hasData = true;
                 out.println("<tr>");
                 out.println("<td>" + rs.getInt("id") + "</td>");
                 out.println("<td>" + rs.getString("name") + "</td>");
@@ -63,20 +40,12 @@ public class ViewStudentsServlet extends HttpServlet {
                 out.println("</tr>");
             }
 
-            if (!hasData) {
-                out.println("<tr><td colspan='3' class='empty-cell'>No students found</td></tr>");
-            }
-
-            out.println("</tbody></table></div>");
+            out.println("</table>");
+            out.println("<br><a href='index.html'>Back to Home</a>");
         } catch (Exception e) {
-            out.println("<p class='error-text'>Error: " + e.getMessage() + "</p>");
+            out.println("<h2>Error: " + e.getMessage() + "</h2>");
         }
 
-        out.println("""
-                    </div>
-                </div>
-            </body>
-            </html>
-        """);
+        out.println("</body></html>");
     }
 }

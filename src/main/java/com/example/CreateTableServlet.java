@@ -24,13 +24,10 @@ public class CreateTableServlet extends HttpServlet {
             Connection con = DBConnection.getConnection();
             Statement stmt = con.createStatement()
         ) {
-            String sql = """
-                CREATE TABLE IF NOT EXISTS students (
-                    id SERIAL PRIMARY KEY,
-                    name VARCHAR(100) NOT NULL,
-                    age INT NOT NULL
-                )
-            """;
+            String sql = "CREATE TABLE IF NOT EXISTS students (" +
+                         "id SERIAL PRIMARY KEY, " +
+                         "name VARCHAR(100) NOT NULL, " +
+                         "age INT NOT NULL)";
 
             stmt.executeUpdate(sql);
 
@@ -38,36 +35,38 @@ public class CreateTableServlet extends HttpServlet {
                 <!DOCTYPE html>
                 <html>
                 <head>
-                    <meta charset='UTF-8'>
+                    <meta charset="UTF-8">
                     <title>Create Table</title>
-                    <link rel='stylesheet' href='style.css'>
+                    <link rel="stylesheet" href="style.css">
                 </head>
                 <body>
-                    <div class='page'>
-                        <div class='card small-card'>
+                    <div class="page">
+                        <div class="card small-card">
                             <h1>Table Ready</h1>
                             <p>The <b>students</b> table was created successfully.</p>
-                            <a class='btn' href='index.html'>Back to Home</a>
+                            <a class="btn" href="index.html">Back to Home</a>
                         </div>
                     </div>
                 </body>
                 </html>
             """);
+
         } catch (Exception e) {
             out.println("""
                 <!DOCTYPE html>
                 <html>
                 <head>
-                    <meta charset='UTF-8'>
+                    <meta charset="UTF-8">
                     <title>Error</title>
-                    <link rel='stylesheet' href='style.css'>
+                    <link rel="stylesheet" href="style.css">
                 </head>
                 <body>
-                    <div class='page'>
-                        <div class='card small-card'>
+                    <div class="page">
+                        <div class="card small-card">
                             <h1>Error</h1>
-                            <p>""" + e.getMessage() + """</p>
-                            <a class='btn' href='index.html'>Back to Home</a>
+                            <p>""" + e.getMessage() + """
+                            </p>
+                            <a class="btn" href="index.html">Back to Home</a>
                         </div>
                     </div>
                 </body>

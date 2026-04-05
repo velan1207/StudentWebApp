@@ -1,12 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Web App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Student Web App</h1>
-    <p>This is the home page.</p>
-    <a href="hello">Open Hello Servlet</a>
+    <div class="page">
+        <div class="hero card">
+            <div class="hero-text">
+                <p class="badge">Java Servlet + PostgreSQL</p>
+                <h1>Student Management System</h1>
+                <p class="subtitle">
+                    A modern, responsive web application built using Java Servlet,
+                    Maven, Docker, Render, and Neon PostgreSQL.
+                </p>
+
+                <div class="actions">
+                    <a class="btn" href="view-students">View Students</a>
+                    <a class="btn secondary" href="create-table">Create Table</a>
+                    <a class="btn ghost" href="hello">Hello Servlet</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Add Student</h2>
+                <p class="section-text">Enter student details below and save them into the cloud database.</p>
+
+                <form action="add-student" method="post" class="student-form">
+                    <div class="input-group">
+                        <label for="name">Student Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter student name" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="age">Student Age</label>
+                        <input type="number" id="age" name="age" placeholder="Enter age" required>
+                    </div>
+
+                    <button type="submit" class="btn full">Add Student</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Quick Actions</h2>
+                <p class="section-text">Use these shortcuts to test your application modules.</p>
+
+                <div class="quick-links">
+                    <a href="create-table" class="quick-link">Create Students Table</a>
+                    <a href="view-students" class="quick-link">Open Student List</a>
+                    <a href="hello" class="quick-link">Test Hello Servlet</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

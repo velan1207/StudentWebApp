@@ -1,3 +1,5 @@
 com/example/DBConnection.class
 com/example/CreateTableServlet.class
+com/example/AddStudentServlet.class
 com/example/HelloServlet.class
+com/example/ViewStudentsServlet.class
